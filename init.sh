@@ -1,2 +1,2 @@
-conda activate tensorrt-toycode
+conda activate tensorrt-toy
 echo "Conda env activated"

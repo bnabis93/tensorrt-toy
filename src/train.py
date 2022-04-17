@@ -147,7 +147,10 @@ def main():
         test_batch_size=args.test_batch_size,
     )
 
-    model = resnet18.to(device)
+    model = resnet18
+    if device == "cuda":
+        model.cuda()
+
     optimizer = optim.Adadelta(model.parameters(), lr=args.lr)
     scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)
     for epoch in range(1, args.epochs + 1):
