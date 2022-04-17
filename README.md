@@ -1,22 +1,2 @@
-# Resnet TensorRT Converting
-## Environment
-- Ubuntu xx.xx
-- GPU : 3090
-
-## 0. Prerequisites
-```bash
-make env
-source init.sh
-make setup
-```
-
-## 1. Training MNIST Dataset using ResNet
-```bash
-make train
-```
-
-
-
-
-
-## Reference
+# Tensorrt toycode
+- [trtexec-convert](./01-trtexec-convert/)
