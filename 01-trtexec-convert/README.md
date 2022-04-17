@@ -4,6 +4,9 @@
 - ImageNet-pretrained resnet50 from [torchvision](https://pytorch.org/vision/stable/models.html)
 ```bash
 $ make model
+# You can get trt model in output dir
+$ ls output
+model.trt
 ```
 
 ## 2. trt model benchmarking
