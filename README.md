@@ -1,4 +1,4 @@
-# Mnist + TensorRT Python Example
+# Resnet TensorRT Converting
 ## Environment
 - Ubuntu xx.xx
 - GPU : 3090
