@@ -1,2 +1,2 @@
 # Tensorrt toycode
-- [trtexec-convert](./01-trtexec-convert/)
+- [Simple convert example for torch model to trt](./01-trtexec-convert/)
