@@ -82,6 +82,6 @@ def set_test_loader(
     )
 
     test_loader = DataLoader(
-        test_dataset, batch_size=100, shuffle=is_shuffled, num_workers=2
+        test_dataset, batch_size=1, shuffle=is_shuffled, num_workers=2
     )
     return test_loader
