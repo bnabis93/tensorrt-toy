@@ -7,6 +7,8 @@
 
 ## Prerequisites
 - Install [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)
+- Install suitable cudatoolkit version vfor your GPU environment.
+    - Revise cudatoolkit version in `Makefile setup`
 ```
 $ make env
 $ conda activate 02-benchmark-cifar10-resnet
