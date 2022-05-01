@@ -1,3 +1,8 @@
+"""Benchmark torch model vs trt model in cifar10 test dataset.
+
+- Author: Bono (bnabis93, github)
+- Email: qhsh9713@gmail.com
+"""
 import argparse
 
 import torch

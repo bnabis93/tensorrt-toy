@@ -1,5 +1,9 @@
+"""Convert pytorch model to Onnx model.
+
+- Author: Bono (bnabis93, github)
+- Email: qhsh9713@gmail.com
+"""
 import argparse
-import os
 
 import torch
 
