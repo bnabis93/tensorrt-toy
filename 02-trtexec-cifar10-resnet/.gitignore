@@ -1,8 +1,0 @@
-.DS_Store
-__pycache__
-output/
-*.onnx
-*.trt
-
-data/
-checkpoint/
