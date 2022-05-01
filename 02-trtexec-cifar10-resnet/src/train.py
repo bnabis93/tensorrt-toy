@@ -1,4 +1,10 @@
-"""Train CIFAR10 with PyTorch."""
+"""Training cifar10 dataset.
+
+- Author: Bono (bnabis93, github)
+- Email: qhsh9713@gmail.com
+
+Reference : https://github.com/kuangliu/pytorch-cifar/blob/master/models/resnet.py
+"""
 import argparse
 import os
 

@@ -1,3 +1,10 @@
+"""Dataset loader.
+
+- Author: Bono (bnabis93, github)
+- Email: qhsh9713@gmail.com
+
+Reference : https://github.com/kuangliu/pytorch-cifar/blob/master/models/resnet.py
+"""
 from typing import Tuple
 
 import numpy as np
@@ -57,3 +64,24 @@ def set_train_validate_loader(
     )
 
     return train_loader, validate_loader
+
+
+def set_test_loader(
+    mean: Tuple[float, float, float] = (0.4914, 0.4822, 0.4465),
+    std: Tuple[float, float, float] = (0.2023, 0.1994, 0.2010),
+    is_shuffled=True,
+) -> Tuple[DataLoader, DataLoader]:
+    """Set test data loader."""
+    print("==> Preparing data..")
+    transform_test = transforms.Compose(
+        [transforms.ToTensor(), transforms.Normalize(mean, std),]
+    )
+
+    test_dataset = torchvision.datasets.CIFAR10(
+        root="./data", train=False, download=True, transform=transform_test
+    )
+
+    test_loader = DataLoader(
+        test_dataset, batch_size=100, shuffle=is_shuffled, num_workers=2
+    )
+    return test_loader
