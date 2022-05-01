@@ -1,5 +1,6 @@
 # trtexec-convert example
 - We are supposed that a GPU is used.
+- I used [NGC Pytorch image](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) to tensorrt converting.
 
 ## 1. Create trt model using ImageNet-pretrained resnet50
 - ImageNet-pretrained resnet50 from [torchvision](https://pytorch.org/vision/stable/models.html)

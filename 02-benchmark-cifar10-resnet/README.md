@@ -1,4 +1,5 @@
 # Torch model vs TensorRT model benchmark using cifar10 dataset and resnet model.
+- I used [NGC Pytorch image](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch) to tensorrt converting and benchmarking.
 
 ## Environment
 - Ubuntu 20.04
@@ -21,6 +22,7 @@ ckpt.pth
 ```
 
 ### 2. Convert torch resnet model to tensorrt model
+- 
 - I used [trtexec](https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec) to convert torch model to tensorrt model. 
 ```
 $ make convert-trt
