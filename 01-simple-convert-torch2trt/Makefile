@@ -1,4 +1,4 @@
-model-trt:
+convert-torch2trt:
 	mkdir $(CURDIR)/output
 	docker run --gpus all -it \
 		--user $(id -u tensorrt):$(id -g tensorrt) \

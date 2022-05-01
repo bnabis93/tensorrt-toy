@@ -3,11 +3,11 @@
     - msr_init: net parameter initialization.
     - progress_bar: progress bar mimic xlua.progress.
 """
-import math
 import os
 import sys
 import time
 
+import torch
 import torch.nn as nn
 import torch.nn.init as init
 

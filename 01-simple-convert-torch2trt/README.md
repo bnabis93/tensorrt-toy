@@ -4,7 +4,7 @@
 ## 1. Create trt model using ImageNet-pretrained resnet50
 - ImageNet-pretrained resnet50 from [torchvision](https://pytorch.org/vision/stable/models.html)
 ```bash
-$ make model-trt
+$ make convert-torch2trt
 # You can get trt model in output dir
 $ ls output
 model.trt

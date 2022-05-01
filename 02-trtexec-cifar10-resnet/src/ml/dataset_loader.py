@@ -34,7 +34,7 @@ def set_train_validate_loader(
     )
 
     validate_dataset = torchvision.datasets.CIFAR10(
-        root="./data", train=False, download=True, transform=transform_valid
+        root="./data", train=True, download=True, transform=transform_valid
     )
 
     num_train = len(train_dataset)

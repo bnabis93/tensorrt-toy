@@ -115,7 +115,7 @@ def validate(
 def main():
     """Main function for training and validation."""
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    start_epoch = args.epoch
+    epochs = args.epoch
     print("device : ", device)
     # Set data loader
     train_loader, validate_loader = set_train_validate_loader(
@@ -137,12 +137,12 @@ def main():
         checkpoint = torch.load("./checkpoint/ckpt.pth")
         net.load_state_dict(checkpoint["net"])
         best_acc = checkpoint["acc"]
-        start_epoch = checkpoint["epoch"]
+        epochs = checkpoint["epoch"]
 
     optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=0.9, weight_decay=5e-4)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
-    for epoch in range(start_epoch, start_epoch + 200):
+    for epoch in range(epochs):
         train(
             net=net,
             train_loader=train_loader,
