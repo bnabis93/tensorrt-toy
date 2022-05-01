@@ -22,7 +22,6 @@ ckpt.pth
 ```
 
 ### 2. Convert torch resnet model to tensorrt model
-- 
 - I used [trtexec](https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec) to convert torch model to tensorrt model. 
 ```
 $ make convert-trt
