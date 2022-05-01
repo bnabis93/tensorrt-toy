@@ -1,5 +1,4 @@
 import argparse
-import os
 
 import torch
 import torchvision.models as models
@@ -20,10 +19,7 @@ if __name__ == "__main__":
         opset_version=12,
         input_names=["input"],
         output_names=["output"],
-        dynamic_axes={
-            "input": {0: "batch_size"},
-            "output": {0: "batch_size"},
-        },
+        dynamic_axes={"input": {0: "batch_size"}, "output": {0: "batch_size"},},
     )
 
     print("Saved {}".format(args.save))
