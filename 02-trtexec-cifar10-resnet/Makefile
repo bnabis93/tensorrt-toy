@@ -25,4 +25,4 @@ benchmark:
 		-v $(CURDIR)/src:/workspace/src \
 		-v $(CURDIR)/output:/workspace/output \
 		--rm nvcr.io/nvidia/pytorch:22.03-py3 \
-		/bin/bash -c "python src/benchmark.py" 
+		/bin/bash -c "pip install pycuda && python src/benchmark.py" 
