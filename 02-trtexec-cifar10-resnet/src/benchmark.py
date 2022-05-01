@@ -1,7 +1,6 @@
 import argparse
 
 import torch
-import torch.backends.cudnn as cudnn
 import torch.nn as nn
 from torch.utils.data.dataloader import DataLoader
 
@@ -12,7 +11,7 @@ from utils import progress_bar
 parser = argparse.ArgumentParser(description="PyTorch CIFAR10 Training")
 parser.add_argument(
     "--model_path",
-    default="./checkpoint/ckpt.pth",
+    default="./checkpoint/model.pth",
     type=str,
     help="Pretrained model weight path",
 )
@@ -51,12 +50,7 @@ def main():
     test_loader = set_test_loader()
     net = resnet34()
     net = net.to(device)
-    if device == "cuda":
-        net = torch.nn.DataParallel(net)
-        cudnn.benchmark = True
-    checkpoint = torch.load(args.model_path)
-    print("checkpoint : ", checkpoint.keys())
-    net.load_state_dict(checkpoint["net"])
+    net.load_state_dict(torch.load(args.model_path))
     test_acc = test(net=net, device=device, test_loader=test_loader)
     print(f"Cifar 10 pytorch model test acc : {test_acc}")
 

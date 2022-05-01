@@ -18,7 +18,9 @@ make train
 ```
 
 ## Convert torch resnet model to tensorrt model
-
+```
+make convert-trt
+```
 
 ## Benchmark cifar10 dataset 
 

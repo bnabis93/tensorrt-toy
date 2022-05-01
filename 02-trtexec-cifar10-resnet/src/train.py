@@ -9,7 +9,6 @@ import argparse
 import os
 
 import torch
-import torch.backends.cudnn as cudnn
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data.dataloader import DataLoader
@@ -26,9 +25,6 @@ parser.add_argument(
 )
 parser.add_argument(
     "--shuffle", default=True, type=bool, help="is dataset shuffled?",
-)
-parser.add_argument(
-    "--resume", "-r", action="store_true", help="resume from checkpoint"
 )
 args = parser.parse_args()
 
@@ -107,14 +103,9 @@ def validate(
     acc = 100.0 * correct / total
     if acc > best_acc:
         print("Saving..")
-        state = {
-            "net": net.state_dict(),
-            "acc": acc,
-            "epoch": epoch,
-        }
-        if not os.path.isdir("checkpoint"):
-            os.mkdir("checkpoint")
-        torch.save(state, "./checkpoint/ckpt.pth")
+        if not os.path.isdir("output"):
+            os.mkdir("output")
+        torch.save(net.state_dict(), "./output/ckpt.pth")
         best_acc = acc
 
 
@@ -132,21 +123,8 @@ def main():
     print("==> Building model..")
     net = resnet34()
     net = net.to(device)
-    if device == "cuda":
-        net = torch.nn.DataParallel(net)
-        cudnn.benchmark = True
-
-    if args.resume:
-        # Load checkpoint.
-        print("==> Resuming from checkpoint..")
-        assert os.path.isdir("checkpoint"), "Error: no checkpoint directory found!"
-        checkpoint = torch.load("./checkpoint/ckpt.pth")
-        net.load_state_dict(checkpoint["net"])
-        best_acc = checkpoint["acc"]
-        epochs = checkpoint["epoch"]
-
     optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=0.9, weight_decay=5e-4)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
 
     for epoch in range(epochs):
         train(
