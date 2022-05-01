@@ -9,7 +9,7 @@ convert-torch2trt:
 					--saveEngine=./output/model.trt"
 
 benchmark:
-	docker run --gpus 1 -it \
+	docker run --gpus all -it \
 		-v $(CURDIR)/output:/workspace/output \
 		--rm nvcr.io/nvidia/pytorch:22.03-py3 \
 		/bin/bash -c "trtexec \
