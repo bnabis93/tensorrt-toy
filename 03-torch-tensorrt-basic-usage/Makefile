@@ -10,4 +10,4 @@ data:
 	wget  -O ./data/imagenet_class_index.json "https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json"
 
 benchmark:
-	python src/torch_tensorrt.py --batch_size ${BATCH_SIZE} --num_run ${NUM_RUN} --quant ${QUANTIZATION}
+	python ./src/main.py --batch_size ${BATCH_SIZE} --num_run ${NUM_RUN} --quant ${QUANTIZATION}

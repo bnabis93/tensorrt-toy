@@ -4,9 +4,9 @@ import time
 import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
-import torchvision.models as models
-
 import torch_tensorrt
+import torchvision.models as models
+from torch_tensorrt import compile
 
 parser = argparse.ArgumentParser(description="PyTorch CIFAR10 Training")
 parser.add_argument(
@@ -65,9 +65,10 @@ def main():
     # benchmark(
     #     model=resnet50, input_shape=(args.batch_size, 3, 224, 224), nruns=args.num_run,
     # )
+    
     if args.quant == "fp32":
         print("TensorRT FP32 benchmark")
-        trt_model_fp32 = torch_tensorrt.compile(
+        trt_model_fp32 = compile(
             resnet50,
             inputs=[
                 torch_tensorrt.Input(
@@ -84,7 +85,7 @@ def main():
         )
     elif args.quant == "fp16":
         print("TensorRT FP16 benchmark")
-        trt_model_fp16 = torch_tensorrt.compile(
+        trt_model_fp16 = compile(
             resnet50,
             inputs=[
                 torch_tensorrt.Input((args.batch_size, 3, 224, 224), dtype=torch.half)
