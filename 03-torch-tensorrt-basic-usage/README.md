@@ -8,16 +8,39 @@
 - Ubuntu 20.04
 - GPU : RTX 3080
 
-## 
+## How to use it?
+0. Download test data
+```
+$ make data
+```
+1. Pull the docker image and run it.
 ```
 docker run --gpus all -it \
+	-v $(pwd)/Makefile:/workspace/Makefile \
 	-v $(pwd)/src:/workspace/src \
     -v $(pwd)/data:/workspace/data \
-	--rm nvcr.io/nvidia/pytorch:22.04-py3 \
+	--rm nvcr.io/nvidia/pytorch:22.07-py3 \
 	/bin/bash 
 ```
+2. Run benchmark
+- You can set the parameters for benchmark test
+- Parameters are below.
+	- BATCH_SIZE : Set the batch size for inference.
+	- NUM_RUN = Set the number of inference (for average result.)
+	- QUANTIZATION : Set the quantization method (fp32, fp16).
+```
+$ make benchmark
+```
 
-
+3. Get results
+```
+...
+Iteration 990/1000, ave batch time 2.29 ms
+Iteration 1000/1000, ave batch time 2.29 ms
+Input shape: torch.Size([1, 3, 224, 224])
+Output features size: torch.Size([1, 1000])
+Average batch time: 2.29 ms
+```
 
 ## Reference
 - Torch-TensorRT : https://github.com/NVIDIA/Torch-TensorRT
