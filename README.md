@@ -1,9 +1,8 @@
 # TODO
-1. TensorRT Cifar10 PTQ example
-2. TensorRT Cifar10 QAT example
-3. Torch-TensorRT basic usage example
-4. [Torch-TensorRT](https://github.com/NVIDIA/Torch-TensorRT) vs Torch -> onnx -> TensorRT benchmark
-
+1. Simple tensorrt evaluation code.
+2. [Torch-TensorRT](https://github.com/NVIDIA/Torch-TensorRT) vs Torch -> onnx -> TensorRT benchmark
+3. TensorRT Cifar10 PTQ example 
+4. TensorRT Cifar10 QAT example
 
 # Tensorrt toycode
 - [TensorRT Tips](./00-tensorrt-tips/)
